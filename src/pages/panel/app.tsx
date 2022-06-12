@@ -37,7 +37,7 @@ const Panel = () => {
     [saveHtml, handleSetClassList]
   );
   return (
-    <div className="relative flex max-h-full min-h-screen w-full flex-col overflow-hidden bg-white font-sans text-black dark:bg-neutral-800 dark:text-white">
+    <div className="relative flex max-h-full min-h-screen w-full flex-col overflow-hidden bg-white text-black dark:bg-neutral-800 dark:text-white">
       <Filter
         value={filterValue}
         copied={copied}

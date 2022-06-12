@@ -4,13 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply font-sans antialiased;
+}
 #root {
   min-height: 100vh;
   font-size: 14px;
   overflow: hidden;
   position: fixed;
   inset: 0;
-  @apply font-sans;
 }
 
 .child-overscroll-contain > div {
