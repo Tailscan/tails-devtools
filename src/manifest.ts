@@ -10,6 +10,11 @@ const manifest: ManifestType = {
   icons: {
     "128": "./logo.png",
   },
+  action: {
+    default_icon: {
+      "128": "./logo.png",
+    },
+  },
   devtools_page: "src/pages/devtools/index.html",
   sandbox: {
     pages: ["src/pages/sandbox/index.html"],
