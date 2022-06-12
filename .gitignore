@@ -12,10 +12,7 @@
 .env.local
 .idea
 
-#generated manifest
-public/manifest.json
-
-#copied contentStyle
-public/contentStyle.css
+#generated
+public/*
 
 /tails-devtools.zip
