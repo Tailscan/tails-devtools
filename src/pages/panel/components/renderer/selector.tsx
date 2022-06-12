@@ -17,21 +17,20 @@ export const ClassSelector = memo(() => {
     handleResolveClass();
   }, [selectedClass]);
 
-  if (!selectedClass) {
-    return (
-      <div className="flex h-full items-center justify-center p-10  text-xs italic text-neutral-500 dark:text-neutral-300">
-        No selected class.
-      </div>
-    );
-  }
   return (
-    <div>
-      <CodeEditor
-        value={css}
-        readOnly
-        lang="css"
-        className="hide-line-number"
-      />
+    <div className="relative h-full">
+      {!selectedClass ? (
+        <div className="flex h-full items-center justify-center p-10  text-xs italic text-neutral-500 dark:text-neutral-300">
+          No selected class.
+        </div>
+      ) : (
+        <CodeEditor
+          value={css}
+          readOnly
+          lang="css"
+          className="hide-line-number"
+        />
+      )}
     </div>
   );
 });

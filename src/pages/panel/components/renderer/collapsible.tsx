@@ -3,6 +3,8 @@ import { memo, useState } from "react";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 
 import { ChavronDown } from "@panel/icons";
+import { useClassController } from "@panel/context/class";
+
 import { NormalizedClassList } from "./normalize";
 import { ClassItem } from "./item";
 
@@ -15,6 +17,7 @@ interface CollapsibleProps {
 
 export const Collapsible: React.FC<CollapsibleProps> = memo(
   ({ name, classList, first, last }) => {
+    const { inspectedEl } = useClassController();
     const isDefault = name === "DEFAULT";
     const [isOpen, setIsOpen] = useState(true);
 
@@ -34,8 +37,13 @@ export const Collapsible: React.FC<CollapsibleProps> = memo(
             !first && "border-t"
           )}
         >
-          <span className="font-medium">
-            {isDefault ? "This Element" : name}
+          <span
+            className={clsx(
+              "font-medium",
+              isDefault && "text-purple-500 dark:text-blue-300"
+            )}
+          >
+            {isDefault ? inspectedEl?.displayName || "This Element" : name}
           </span>
           <ChavronDown
             className={clsx(

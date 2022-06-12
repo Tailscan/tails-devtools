@@ -23,10 +23,15 @@ export function localStorageSetItem(key: string, value: any): void {
 }
 
 export function inspectElement(inspectedElement: HTMLElement) {
+  const { width, height } = inspectedElement.getBoundingClientRect();
   const element = {
     classes: [...inspectedElement.classList].filter(Boolean),
+    displayName: inspectedElement.nodeName.toLowerCase(),
+    meta: {
+      width,
+      height,
+    },
   };
-
   return element;
 }
 

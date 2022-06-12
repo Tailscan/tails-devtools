@@ -5,23 +5,31 @@ interface ICheckboxProps<T = HTMLInputElement> {
   onChange?: React.ChangeEventHandler<T>;
   checked?: boolean;
   disabled?: boolean;
-  color?: "blue" | "teal" | "pink";
+  color?: "blue" | "teal" | "pink" | "rose" | "purple";
 }
 
 export type CheckboxProps = ICheckboxProps &
   React.HTMLAttributes<HTMLInputElement>;
 
 const colors = {
+  rose: {
+    checkbox: "text-blue-500 dark:text-yellow-500",
+    span: "text-rose-500 dark:text-rose-300",
+  },
+  purple: {
+    checkbox: "text-blue-500 dark:text-yellow-500",
+    span: "text-purple-500 dark:text-purple-300",
+  },
   blue: {
-    checkbox: "text-blue-500",
+    checkbox: "text-blue-500 dark:text-yellow-500",
     span: "text-blue-500 dark:text-blue-300",
   },
   teal: {
-    checkbox: "text-teal-500 dark:text-yellow-600",
+    checkbox: "text-blue-500 dark:text-yellow-500",
     span: "text-teal-500 dark:text-teal-300",
   },
   pink: {
-    checkbox: "text-blue-500 dark:text-yellow-600",
+    checkbox: "text-blue-500 dark:text-yellow-500",
     span: "text-pink-500 dark:text-pink-300",
   },
 };

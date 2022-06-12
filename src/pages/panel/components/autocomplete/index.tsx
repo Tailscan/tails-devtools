@@ -152,7 +152,6 @@ export function Autocomplete({
     },
     stateReducer(_, actionAndChanges) {
       const { type, changes } = actionAndChanges;
-      // console.log("stateReducer", changes);
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownArrowDown:
           search(changes.inputValue);
@@ -175,7 +174,6 @@ export function Autocomplete({
     placeholder: "Add class...",
     className: "font-mono w-full",
     onChange: (e) => {
-      // console.log('onChange', (e.target as HTMLInputElement).value);
       onChange((e.target as HTMLInputElement).value);
     },
     onKeyDown: (e) => {

@@ -1,9 +1,11 @@
 import React, { createContext, memo, useContext } from "react";
 import { ClassList } from "../hooks";
+import { InspectedElement } from "../remote";
 import { SandboxContextType } from "./sandbox";
 
 export interface ClassProviderProps {
   children: React.ReactNode;
+  inspectedEl?: InspectedElement;
   classList: ClassList;
   selectedClass: string;
   setSelectedClass: (newSelectedClass: string) => void;

@@ -28,7 +28,6 @@ export const AutocompleteItem = ({
   //     if (!onResolveCompleteItem) return null;
   //     const newItem = await onResolveCompleteItem(completion);
   //     if (newItem && newItem.label === completion.label && !unmounted.current) {
-  //       console.log({ key, completion, newItem });
   //       setResolved(newItem);
   //     }
   //   };

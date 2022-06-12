@@ -2,6 +2,7 @@ import fuzzysort from "fuzzysort";
 import * as React from "react";
 
 import { bridge } from "../bridge";
+import { InspectedElement } from "../remote";
 import { sortClassArray } from "../sortClasses";
 import { useCopyToClipboard } from "./use-copy";
 import { useMount } from "./use-mount";
@@ -32,6 +33,7 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
 
   const [filterValue, setFilterValue] = React.useState("");
 
+  const [inspectedEl, setInspectedEl] = React.useState<InspectedElement>();
   const [mapClassList, _setMapClassList] = React.useState<MapClassList>(
     new Map()
   );
@@ -74,6 +76,7 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
         checked: true,
       }))
     );
+    setInspectedEl(inspectedElement);
     setMapClassList(newMapClassList);
   }, []);
 
@@ -130,6 +133,7 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
           checked: true,
         }))
       );
+      setInspectedEl(inspectedElement);
       setMapClassList(newMapClassList);
     });
 
@@ -141,6 +145,7 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
   });
 
   return {
+    inspectedEl,
     classList: toArray(fuzzySort.current),
     filterValue,
     copied,

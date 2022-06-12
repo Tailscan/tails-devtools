@@ -10,6 +10,7 @@
   overflow: hidden;
   position: fixed;
   inset: 0;
+  @apply font-sans;
 }
 
 .child-overscroll-contain > div {

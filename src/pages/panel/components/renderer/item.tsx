@@ -44,7 +44,13 @@ export const ClassItem = memo(
             <Checkbox
               checked={className.checked}
               color={
-                isVariant ? "pink" : themeName === "dark" ? "teal" : "blue"
+                isVariant
+                  ? themeName === "dark"
+                    ? "purple"
+                    : "teal"
+                  : themeName === "dark"
+                  ? "rose"
+                  : "rose"
               }
               onChange={(e) => {
                 onToggleClass(className.className, (e.target as any).checked);

@@ -15,6 +15,7 @@ const Panel = () => {
 
   const {
     classList,
+    inspectedEl,
     filterValue,
     copied,
     handleFilterChange,
@@ -51,6 +52,7 @@ const Panel = () => {
       />
 
       <ClassListProvider
+        inspectedEl={inspectedEl}
         classList={classList}
         onToggleClass={handleToggleClass}
         onResolveColor={resolveColor}
