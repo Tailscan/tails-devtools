@@ -60,8 +60,11 @@ export const bridge = {
     });
   },
   injectCSS: (css: string) => {
-    console.log({ css });
-    execute(injectCSS, [css], console.log);
+    return new Promise<void>((resolve) => {
+      execute(injectCSS, [css], () => {
+        resolve();
+      });
+    });
   },
   storage: {
     get: (key: string) => {

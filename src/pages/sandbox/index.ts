@@ -72,7 +72,6 @@ const VIRTUAL_HTML_FILENAME = "/htmlInput";
         }
         case actions.hover: {
           const result = await tailwindInstance.doHover(event.data.payload);
-          console.log({ result });
           if (event && event.source) {
             event.source.postMessage(
               {
@@ -104,7 +103,6 @@ const VIRTUAL_HTML_FILENAME = "/htmlInput";
 
           try {
             const userConfig = await parseConfig(configStr, 3);
-            console.log({ config: { ...defaultConfig, ...userConfig } });
             const result = await postcss([
               tailwindcss({ ...defaultConfig, ...userConfig }),
             ]).process(defaultCSS, {

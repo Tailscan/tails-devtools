@@ -2,6 +2,7 @@ import fuzzysort from "fuzzysort";
 import * as React from "react";
 
 import { bridge } from "../bridge";
+import { sortClassArray } from "../sortClasses";
 import { useCopyToClipboard } from "./use-copy";
 import { useMount } from "./use-mount";
 
@@ -66,8 +67,9 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
 
   const handleFetchElement = React.useCallback(async () => {
     const inspectedElement = await bridge.fetchElement();
+    const sortedClasses = sortClassArray(inspectedElement?.classes || []);
     const newMapClassList = toMap(
-      (inspectedElement?.classes || []).map((className) => ({
+      sortedClasses.map((className) => ({
         className,
         checked: true,
       }))
@@ -121,8 +123,9 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
   React.useEffect(() => {
     const unsubscribe = bridge.onSelectionChanged((inspectedElement) => {
       resetState();
+      const sortedClasses = sortClassArray(inspectedElement?.classes || []);
       const newMapClassList = toMap(
-        (inspectedElement?.classes || []).map((className) => ({
+        sortedClasses.map((className) => ({
           className,
           checked: true,
         }))

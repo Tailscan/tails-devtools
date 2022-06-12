@@ -162,7 +162,6 @@ export function Autocomplete({
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
           applySearchResult(changes.selectedItem?.label || changes.inputValue);
-          console.log({ changes });
           return;
         default:
           break;
