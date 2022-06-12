@@ -22,9 +22,9 @@ const Panel = () => {
   const {
     classList,
     filterValue,
-    handleFetchElement,
     handleFilterChange,
     handleToggleClass,
+    handleSetClassList,
     handleCopy,
   } = useClassList({
     onReset: () => {
@@ -35,17 +35,10 @@ const Panel = () => {
 
   const handleHitEnter = useCallback(
     async (classList: string) => {
-      console.log("enter", classList);
       saveHtml(classList);
-      const classNames = classList.split(/[\s+]/);
-      const promises: Promise<void>[] = [];
-      classNames.forEach((className) => {
-        promises.push(bridge.toggleClass(className, true));
-      });
-      await Promise.all(promises);
-      handleFetchElement();
+      await handleSetClassList(classList);
     },
-    [saveHtml]
+    [saveHtml, handleSetClassList]
   );
   return (
     <div

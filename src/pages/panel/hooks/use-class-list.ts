@@ -1,5 +1,4 @@
 import fuzzysort from "fuzzysort";
-import { className } from "postcss-selector-parser";
 import * as React from "react";
 
 import { bridge } from "../bridge";
@@ -78,21 +77,39 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
 
   const handleToggleClass = React.useCallback(
     async (className: string, checked: boolean) => {
-      bridge.toggleClass(className, checked);
       mapClassList.set(className, checked);
       setMapClassList(new Map(mapClassList));
+      handleFilterChange(filterValue);
+      const activeClassList = toArray(mapClassList).filter(
+        (className) => className.checked
+      );
+      const classStr = activeClassList
+        .map((className) => className.className)
+        .join(" ");
+      await bridge.setClassList(classStr);
     },
-    [mapClassList]
+    [mapClassList, filterValue, handleFilterChange]
+  );
+
+  const handleSetClassList = React.useCallback(
+    async (classList: string) => {
+      const classNames = classList.split(/[\s+]/);
+      const promises: Promise<void>[] = [];
+      classNames.forEach((className) => {
+        promises.push(handleToggleClass(className, true));
+      });
+      await Promise.all(promises);
+    },
+    [handleToggleClass]
   );
 
   const handleCopy = React.useCallback(() => {
-    const checkedClassList = toArray(mapClassList).filter(
+    const activeClassList = toArray(mapClassList).filter(
       (className) => className.checked
     );
-    const copyText = checkedClassList
+    const copyText = activeClassList
       .map((className) => className.className)
       .join(" ");
-    console.log(copyText);
     copy(copyText);
   }, [mapClassList, copy]);
 
@@ -126,6 +143,7 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
     handleFilterChange,
     handleFetchElement,
     handleToggleClass,
+    handleSetClassList,
     handleCopy,
   };
 };

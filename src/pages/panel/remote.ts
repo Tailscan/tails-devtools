@@ -38,6 +38,10 @@ export function toggleClassList(
   inspectedElement.classList.toggle(name, active);
 }
 
+export function setClassList(inspectedElement: HTMLElement, classList: string) {
+  inspectedElement.className = classList;
+}
+
 export type InspectedElement = ReturnType<typeof inspectElement>;
 
 export function injectCSS(css: string) {

@@ -6,6 +6,7 @@ import {
   localStorageRemoveItem,
   localStorageSetItem,
   injectCSS,
+  setClassList,
 } from "./remote";
 
 const devtools = chrome.devtools;
@@ -47,6 +48,13 @@ export const bridge = {
   toggleClass: async (name: string, active: boolean) => {
     return new Promise<void>((resolve) => {
       inspect(toggleClassList, [name, active], () => {
+        resolve();
+      });
+    });
+  },
+  setClassList: async (classList: string) => {
+    return new Promise<void>((resolve) => {
+      inspect(setClassList, [classList], () => {
         resolve();
       });
     });
