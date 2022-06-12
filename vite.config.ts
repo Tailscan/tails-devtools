@@ -36,7 +36,6 @@ export const sharedConfig: UserConfig = {
   resolve: {
     alias: {
       "@src": root,
-      "@assets": assetsDir,
       "@pages": pagesDir,
       "@panel": panelDir,
     },

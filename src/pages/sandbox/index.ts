@@ -2,9 +2,10 @@ import postcss from "postcss";
 import { tailwindcss } from "vc.tailwindcss";
 import * as culori from "culori";
 
-import { actions } from "../panel/actions";
-import { CompleteItem } from "../panel/components";
-import { defaultCSS } from "../panel/files";
+import { actions } from "@panel/actions";
+import { CompleteItem } from "@panel/components";
+import { defaultCSS } from "@panel/files";
+
 import { parseConfig } from "./parseConfig";
 import { getColor } from "./tailwindcss-intellisense/utils/color";
 import { TailwindCSS } from "./worker";

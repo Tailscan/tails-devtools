@@ -20,6 +20,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "no-console": "off",
     "react/react-in-jsx-scope": "off",
     "react/display-name": "off",
     "react/prop-types": "off",

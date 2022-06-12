@@ -18,7 +18,6 @@
     "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"],
-      "@assets/*": ["src/assets/*"],
       "@panel/*": ["src/pages/panel/*"],
       "@pages/*": ["src/pages/*"]
     }
