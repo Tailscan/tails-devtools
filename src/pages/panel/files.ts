@@ -1,13 +1,9 @@
 export type Files = Record<string, string>;
 
-export const defaultConfig = `const colors = require('tailwindcss/colors');
-    
-module.exports = {
+export const defaultConfig = `module.exports = {
   theme: {
     extend: {
-      colors: {
-        trueGray: colors.trueGray
-      }
+      // ...
     },
   },
   plugins: [],
