@@ -4,6 +4,7 @@ import type { UserConfig } from "vite";
 import { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 import copyLogo from "./utils/plugins/copy-logo";
+import copyFonts from "./utils/plugins/copy-fonts";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
@@ -43,7 +44,7 @@ export const sharedConfig: UserConfig = {
   define: {
     "process.env": process.env,
   },
-  plugins: [react(), makeManifest(), selfResolve(), copyLogo()],
+  plugins: [react(), makeManifest(), selfResolve(), copyLogo(), copyFonts()],
   publicDir,
 };
 

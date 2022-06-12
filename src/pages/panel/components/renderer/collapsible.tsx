@@ -22,10 +22,10 @@ export const Collapsible: React.FC<CollapsibleProps> = memo(
       <CollapsiblePrimitive.Root
         open={isOpen}
         onOpenChange={setIsOpen}
-        className={clsx("w-full", !isOpen ? "pb-0" : last ? "pb-12" : "pb-2")}
-        style={{
-          fontFamily: "'IBM Plex Mono'",
-        }}
+        className={clsx(
+          "w-full font-mono",
+          !isOpen ? "pb-0" : last ? "pb-12" : "pb-2"
+        )}
       >
         <CollapsiblePrimitive.Trigger
           className={clsx(

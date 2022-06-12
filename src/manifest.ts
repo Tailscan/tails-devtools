@@ -15,6 +15,12 @@ const manifest: ManifestType = {
       "128": "./logo.png",
     },
   },
+  web_accessible_resources: [
+    {
+      resources: ["fonts/*"],
+      matches: ["<all_urls>"],
+    },
+  ],
   devtools_page: "src/pages/devtools/index.html",
   sandbox: {
     pages: ["src/pages/sandbox/index.html"],

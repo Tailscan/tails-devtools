@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Inter var";
+  font-weight: 100 900;
+  font-display: block;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url("chrome-extension://__MSG_@@extension_id__/fonts/Inter-roman-latin.var.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Code VF";
+  font-weight: 300 700;
+  font-style: normal;
+  src: url("chrome-extension://__MSG_@@extension_id__/fonts/FiraCode-VF.woff2")
+      format("woff2-variations"),
+    url("chrome-extension://__MSG_@@extension_id__/fonts/FiraCode-VF.woff")
+      format("woff-variations");
+}
