@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
-@import "./prism-one-dark.css";
 
 @tailwind base;
 @tailwind components;
@@ -40,4 +39,8 @@ code[class*="language-"],
 .reflex-container.vertical > .reflex-splitter {
   @apply z-10 border-neutral-200 hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600;
   height: auto;
+}
+
+.cm-theme-dark .cm-editor {
+  @apply bg-neutral-800;
 }
