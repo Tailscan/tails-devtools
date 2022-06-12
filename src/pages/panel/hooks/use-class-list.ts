@@ -28,7 +28,7 @@ const toMap = (array: { className: string; checked: boolean }[]) => {
 };
 
 export const useClassList = ({ onReset }: { onReset?: () => void }) => {
-  const [_, copy] = useCopyToClipboard();
+  const [copied, copy] = useCopyToClipboard();
 
   const [filterValue, setFilterValue] = React.useState("");
 
@@ -143,6 +143,7 @@ export const useClassList = ({ onReset }: { onReset?: () => void }) => {
   return {
     classList: toArray(fuzzySort.current),
     filterValue,
+    copied,
     handleFilterChange,
     handleFetchElement,
     handleToggleClass,

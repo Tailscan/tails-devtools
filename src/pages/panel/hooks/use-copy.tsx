@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type CopiedValue = string | null;
 type CopyFn = (text: string) => Promise<boolean>; // Return success
@@ -23,6 +23,7 @@ function copyText(text: string) {
 
 export function useCopyToClipboard(): [CopiedValue, CopyFn] {
   const [copiedText, setCopiedText] = useState<CopiedValue>("");
+  const timeOut = useRef<ReturnType<typeof setTimeout>>();
 
   const copy: CopyFn = async (text) => {
     if (!document.execCommand) {
@@ -32,8 +33,15 @@ export function useCopyToClipboard(): [CopiedValue, CopyFn] {
 
     // Try to save to clipboard then save it in the state if worked
     try {
+      if (timeOut.current) {
+        clearTimeout(timeOut.current);
+      }
       copyText(text);
       setCopiedText(text);
+
+      timeOut.current = setTimeout(() => {
+        setCopiedText(null);
+      }, 500);
       return true;
     } catch (error) {
       console.warn("Copy failed", error);

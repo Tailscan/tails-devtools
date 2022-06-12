@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 
 import { Autocomplete, Filter, Renderer, Config } from "./components";
 
-import { bridge } from "./bridge";
 import { useClassList } from "./hooks";
 import { useSandbox } from "./context/sandbox";
 import { ClassListProvider } from "./context/class";
@@ -17,6 +16,7 @@ const Panel = () => {
   const {
     classList,
     filterValue,
+    copied,
     handleFilterChange,
     handleToggleClass,
     handleSetClassList,
@@ -44,6 +44,7 @@ const Panel = () => {
     >
       <Filter
         value={filterValue}
+        copied={copied}
         onChange={handleFilterChange}
         onCopy={handleCopy}
       />

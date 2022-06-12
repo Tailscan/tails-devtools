@@ -1,14 +1,21 @@
+import clsx from "clsx";
 import React from "react";
 import { FilterIcon } from "../icons";
 import { ThemeToggle } from "./theme-toggle";
 
 interface FilterProps {
   value: string;
+  copied: string | null;
   onChange: (value: string) => void;
   onCopy: () => void;
 }
 
-export const Filter: React.FC<FilterProps> = ({ value, onChange, onCopy }) => {
+export const Filter: React.FC<FilterProps> = ({
+  value,
+  copied,
+  onChange,
+  onCopy,
+}) => {
   return (
     <div className="flex h-7 w-full border-b border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-800">
       <div className="relative flex-1">
@@ -25,11 +32,14 @@ export const Filter: React.FC<FilterProps> = ({ value, onChange, onCopy }) => {
       <div className="flex items-center space-x-px px-1">
         <button
           onClick={onCopy}
-          className="flex h-6 w-6 cursor-default items-center justify-center rounded-sm bg-white text-[11px] font-semibold text-blue-500 transition-colors duration-150 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+          className={clsx(
+            "flex h-6 w-6 cursor-default items-center justify-center rounded-sm bg-white hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700",
+            copied ? "text-blue-500" : "text-neutral-700 dark:text-white"
+          )}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-3.5 w-3.5 text-neutral-700 dark:text-white"
+            className="h-3.5 w-3.5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
