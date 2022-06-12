@@ -8,7 +8,8 @@
     "url": "https://github.com/tw-devtools/react-webext"
   },
   "scripts": {
-    "build": "tsc --noEmit && vite build",
+    "zip": "bash ./scripts/bundle.sh",
+    "build": "tsc --noEmit && vite build && yarn zip",
     "dev": "nodemon"
   },
   "type": "module",
