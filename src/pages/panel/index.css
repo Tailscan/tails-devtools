@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+@import "./prism-one-dark.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  min-height: 100vh;
+  font-size: 14px;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+}
+
+.child-overscroll-contain > div {
+  overscroll-behavior: contain;
+}
+
+code[class*="language-"],
+.dark code[class*="language-"] {
+  padding: 6px !important;
+  font-size: 11px !important;
+  margin: 0;
+}
+
+.cm-editor {
+  font-size: 12px;
+}
+
+.hide-line-number .cm-gutters {
+  display: none !important;
+}
+
+.reflex-container > .reflex-element {
+  width: auto;
+  height: auto;
+}
+
+.reflex-container.vertical > .reflex-splitter {
+  @apply z-10 border-neutral-200 hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600;
+  height: auto;
+}

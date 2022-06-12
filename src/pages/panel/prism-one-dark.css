@@ -1,0 +1,366 @@
+/** * One Dark theme for prism.js * Based on Atom's One Dark theme: https://github.com/atom/atom/tree/master/packages/one-dark-syntax */
+/** * One Dark colours (accurate as of commit 8ae45ca on 6 Sep 2018) * From colors.less * --mono-1: hsl(220, 14%, 71%);
+ * --mono-2: hsl(220, 9%, 55%);
+ * --mono-3: hsl(220, 10%, 40%);
+ * --hue-1: hsl(187, 47%, 55%);
+ * --hue-2: hsl(207, 82%, 66%);
+ * --hue-3: hsl(286, 60%, 67%);
+ * --hue-4: hsl(95, 38%, 62%);
+ * --hue-5: hsl(355, 65%, 65%);
+ * --hue-5-2: hsl(5, 48%, 51%);
+ * --hue-6: hsl(29, 54%, 61%);
+ * --hue-6-2: hsl(39, 67%, 69%);
+ * --syntax-fg: hsl(220, 14%, 71%);
+ * --syntax-bg: hsl(220, 13%, 18%);
+ * --syntax-gutter: hsl(220, 14%, 45%);
+ * --syntax-guide: hsla(220, 14%, 71%, 0.15);
+ * --syntax-accent: hsl(220, 100%, 66%);
+ * From syntax-variables.less * --syntax-selection-color: hsl(220, 13%, 28%);
+ * --syntax-gutter-background-color-selected: hsl(220, 13%, 26%);
+ * --syntax-cursor-line: hsla(220, 100%, 80%, 0.04);
+ */
+
+.dark code[class*="language-"],
+.dark pre[class*="language-"] {
+  background: transparent;
+  color: #abb2bf;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono",
+    monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+.dark code[class*="language-"]::-moz-selection,
+.dark code[class*="language-"] *::-moz-selection,
+.dark pre[class*="language-"] *::-moz-selection {
+  background: #3e4451;
+  color: inherit;
+  text-shadow: none;
+}
+.dark code[class*="language-"]::selection,
+.dark code[class*="language-"] *::selection,
+.dark pre[class*="language-"] *::selection {
+  background: #3e4451;
+  color: inherit;
+  text-shadow: none;
+}
+.dark pre[class*="language-"] {
+  overflow: auto;
+  border-radius: 0.3em;
+}
+.dark :not(pre) > code[class*="language-"] {
+  border-radius: 0.3em;
+  white-space: normal;
+}
+@media print {
+  .dark code[class*="language-"],
+  .dark pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.cdata {
+  color: #5c6370;
+}
+.dark .token.doctype,
+.dark .token.punctuation,
+.dark .token.entity {
+  color: #abb2bf;
+}
+.dark .token.attr-name,
+.dark .token.class-name,
+.dark .token.boolean,
+.dark .token.constant,
+.dark .token.number,
+.dark .token.atrule {
+  color: #d19a66;
+}
+.dark .token.keyword {
+  color: #c678dd;
+}
+.dark .token.property,
+.dark .token.tag,
+.dark .token.symbol,
+.dark .token.deleted,
+.dark .token.important {
+  color: #e06c75;
+}
+.dark .token.selector,
+.dark .token.string,
+.dark .token.char,
+.dark .token.builtin,
+.dark .token.inserted,
+.dark .token.regex,
+.dark .token.attr-value,
+.dark .token.attr-value > .token.punctuation {
+  color: #98c379;
+}
+.dark .token.variable,
+.dark .token.operator,
+.dark .token.function {
+  color: #61afef;
+}
+.dark .token.url {
+  color: #56b6c2;
+}
+.dark .token.attr-value > .token.punctuation.attr-equals,
+.dark .token.special-attr > .token.attr-value > .token.value.css {
+  color: #abb2bf;
+}
+.dark .language-css .token.selector {
+  color: #e06c75;
+}
+.dark .language-css .token.property {
+  color: #abb2bf;
+}
+.dark .language-css .token.function,
+.dark .language-css .token.url > .token.function {
+  color: #56b6c2;
+}
+.dark .language-css .token.url > .token.string.url {
+  color: #98c379;
+}
+.dark .language-css .token.important,
+.dark .language-css .token.atrule .token.rule {
+  color: #c678dd;
+}
+.dark .language-javascript .token.operator {
+  color: #c678dd;
+}
+.dark
+  .language-javascript
+  .token.template-string
+  > .token.interpolation
+  > .token.interpolation-punctuation.punctuation {
+  color: #be5046;
+}
+.dark .language-json .token.operator {
+  color: #abb2bf;
+}
+.dark .language-json .token.null.keyword {
+  color: #d19a66;
+}
+.dark .language-markdown .token.url,
+.dark .language-markdown .token.url > .token.operator,
+.dark .language-markdown .token.url-reference.url > .token.string {
+  color: #abb2bf;
+}
+.dark .language-markdown .token.url > .token.content {
+  color: #61afef;
+}
+.dark .language-markdown .token.url > .token.url,
+.dark .language-markdown .token.url-reference.url {
+  color: #56b6c2;
+}
+.dark .language-markdown .token.blockquote.punctuation,
+.dark .language-markdown .token.hr.punctuation {
+  color: #5c6370;
+  font-style: italic;
+}
+.dark .language-markdown .token.code-snippet {
+  color: #98c379;
+}
+.dark .language-markdown .token.bold .token.content {
+  color: #d19a66;
+}
+.dark .language-markdown .token.italic .token.content {
+  color: #c678dd;
+}
+.dark .language-markdown .token.strike .token.content,
+.dark .language-markdown .token.strike .token.punctuation,
+.dark .language-markdown .token.list.punctuation,
+.dark .language-markdown .token.title.important > .token.punctuation {
+  color: #e06c75;
+}
+.dark .token.bold {
+  font-weight: bold;
+}
+.dark .token.comment,
+.dark .token.italic {
+  font-style: italic;
+}
+.dark .token.entity {
+  cursor: help;
+}
+.dark .token.namespace {
+  opacity: 0.8;
+}
+.dark .token.token.tab:not(:empty):before,
+.dark .token.token.cr:before,
+.dark .token.token.lf:before,
+.dark .token.token.space:before {
+  color: rgba(171, 178, 191, 0.15);
+  text-shadow: none;
+}
+
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
+  background: #3a3f4b;
+  color: #828997;
+  border-radius: 0.3em;
+}
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus,
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
+.dark div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
+  background: #3e4451;
+  color: #abb2bf;
+}
+.dark .line-highlight.line-highlight {
+  background: rgba(153, 187, 255, 0.04);
+}
+.dark .line-highlight.line-highlight:before,
+.dark .line-highlight.line-highlight[data-end]:after {
+  background: #3a3f4b;
+  color: #abb2bf;
+  padding: 0.1em 0.6em;
+  border-radius: 0.3em;
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2);
+  /* same as Toolbar plugin default */
+}
+.dark
+  pre[id].linkable-line-numbers.linkable-line-numbers
+  span.line-numbers-rows
+  > span:hover:before {
+  background-color: rgba(153, 187, 255, 0.04);
+}
+.dark .line-numbers.line-numbers .line-numbers-rows,
+.dark .command-line .command-line-prompt {
+  border-right-color: rgba(171, 178, 191, 0.15);
+}
+.dark .line-numbers .line-numbers-rows > span:before,
+.dark .command-line .command-line-prompt > span:before {
+  color: #636d83;
+}
+.dark .rainbow-braces .token.token.punctuation.brace-level-1,
+.dark .rainbow-braces .token.token.punctuation.brace-level-5,
+.dark .rainbow-braces .token.token.punctuation.brace-level-9 {
+  color: #e06c75;
+}
+.dark .rainbow-braces .token.token.punctuation.brace-level-2,
+.dark .rainbow-braces .token.token.punctuation.brace-level-6,
+.dark .rainbow-braces .token.token.punctuation.brace-level-10 {
+  color: #98c379;
+}
+.dark .rainbow-braces .token.token.punctuation.brace-level-3,
+.dark .rainbow-braces .token.token.punctuation.brace-level-7,
+.dark .rainbow-braces .token.token.punctuation.brace-level-11 {
+  color: #61afef;
+}
+.dark .rainbow-braces .token.token.punctuation.brace-level-4,
+.dark .rainbow-braces .token.token.punctuation.brace-level-8,
+.dark .rainbow-braces .token.token.punctuation.brace-level-12 {
+  color: #c678dd;
+}
+.dark pre.diff-highlight > code .token.token.deleted:not(.prefix),
+.dark pre > code.diff-highlight .token.token.deleted:not(.prefix) {
+  background-color: rgba(255, 82, 102, 0.15);
+}
+.dark
+  pre.diff-highlight
+  > code
+  .token.token.deleted:not(.prefix)::-moz-selection,
+.dark
+  pre.diff-highlight
+  > code
+  .token.token.deleted:not(.prefix)
+  *::-moz-selection,
+.dark
+  pre
+  > code.diff-highlight
+  .token.token.deleted:not(.prefix)::-moz-selection,
+.dark
+  pre
+  > code.diff-highlight
+  .token.token.deleted:not(.prefix)
+  *::-moz-selection {
+  background-color: rgba(251, 86, 105, 0.25);
+}
+.dark pre.diff-highlight > code .token.token.deleted:not(.prefix)::selection,
+.dark pre.diff-highlight > code .token.token.deleted:not(.prefix) *::selection,
+.dark pre > code.diff-highlight .token.token.deleted:not(.prefix)::selection,
+.dark pre > code.diff-highlight .token.token.deleted:not(.prefix) *::selection {
+  background-color: rgba(251, 86, 105, 0.25);
+}
+.dark pre.diff-highlight > code .token.token.inserted:not(.prefix),
+.dark pre > code.diff-highlight .token.token.inserted:not(.prefix) {
+  background-color: rgba(26, 255, 91, 0.15);
+}
+.dark
+  pre.diff-highlight
+  > code
+  .token.token.inserted:not(.prefix)::-moz-selection,
+.dark
+  pre.diff-highlight
+  > code
+  .token.token.inserted:not(.prefix)
+  *::-moz-selection,
+.dark
+  pre
+  > code.diff-highlight
+  .token.token.inserted:not(.prefix)::-moz-selection,
+.dark
+  pre
+  > code.diff-highlight
+  .token.token.inserted:not(.prefix)
+  *::-moz-selection {
+  background-color: rgba(56, 224, 98, 0.25);
+}
+.dark pre.diff-highlight > code .token.token.inserted:not(.prefix)::selection,
+.dark pre.diff-highlight > code .token.token.inserted:not(.prefix) *::selection,
+.dark pre > code.diff-highlight .token.token.inserted:not(.prefix)::selection,
+.dark
+  pre
+  > code.diff-highlight
+  .token.token.inserted:not(.prefix)
+  *::selection {
+  background-color: rgba(56, 224, 98, 0.25);
+}
+.dark .prism-previewer.prism-previewer:before,
+.dark .prism-previewer-gradient.prism-previewer-gradient div {
+  border-color: #262931;
+}
+.dark .prism-previewer-color.prism-previewer-color:before,
+.dark .prism-previewer-gradient.prism-previewer-gradient div,
+.dark .prism-previewer-easing.prism-previewer-easing:before {
+  border-radius: 0.3em;
+}
+.dark .prism-previewer.prism-previewer:after {
+  border-top-color: #262931;
+}
+.dark .prism-previewer-flipped.prism-previewer-flipped.after {
+  border-bottom-color: #262931;
+}
+.dark .prism-previewer-angle.prism-previewer-angle:before,
+.dark .prism-previewer-time.prism-previewer-time:before,
+.dark .prism-previewer-easing.prism-previewer-easing {
+  background: #31363f;
+}
+.dark .prism-previewer-angle.prism-previewer-angle circle,
+.dark .prism-previewer-time.prism-previewer-time circle {
+  stroke: #abb2bf;
+  stroke-opacity: 1;
+}
+.dark .prism-previewer-easing.prism-previewer-easing circle,
+.dark .prism-previewer-easing.prism-previewer-easing path,
+.dark .prism-previewer-easing.prism-previewer-easing line {
+  stroke: #abb2bf;
+}
+.dark .prism-previewer-easing.prism-previewer-easing circle {
+  fill: transparent;
+}
