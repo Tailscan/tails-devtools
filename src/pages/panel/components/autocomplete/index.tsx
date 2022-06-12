@@ -1,23 +1,10 @@
-import React, {
-  useState,
-  useRef,
-  useCallback,
-  forwardRef,
-  useEffect,
-  useMemo,
-} from "react";
-import {
-  useCombobox,
-  UseComboboxGetItemPropsOptions,
-  UseComboboxProps,
-} from "downshift";
-import { FixedSizeList } from "react-window";
-import cx from "clsx";
+import { useState, useRef, useCallback } from "react";
+import { useCombobox, UseComboboxProps } from "downshift";
 import fuzzysort from "fuzzysort";
 
 import { update } from "./undate";
 import { getMatches, replace } from "./utils";
-import { useWindowSize } from "../../hooks";
+import { List } from "./list";
 
 export interface CompleteItem {
   documentation?: string;
@@ -31,17 +18,14 @@ export interface CompleteItem {
   data: string | string[];
 }
 
-type FuzzysortResults = Fuzzysort.KeyResults<CompleteItem>;
+export type FuzzysortResults = Fuzzysort.KeyResults<CompleteItem>;
 
-interface AutocompleteProps
+export interface AutocompleteProps
   extends Omit<UseComboboxProps<CompleteItem>, "items"> {
   completions: CompleteItem[];
   inputValue: string;
   onChange: (value: string) => void;
   onEnter: (item: string) => void;
-  onResolveCompleteItem?: (
-    item: CompleteItem
-  ) => Promise<CompleteItem | undefined>;
 }
 
 export function Autocomplete({
@@ -49,7 +33,6 @@ export function Autocomplete({
   inputValue,
   onChange,
   onEnter,
-  onResolveCompleteItem,
   ...props
 }: AutocompleteProps) {
   const listRef = useRef<unknown | null>(null);
@@ -238,7 +221,6 @@ export function Autocomplete({
                 getItemProps={getItemProps}
                 completions={inputItems}
                 fuzzySort={fuzzySort.current}
-                onResolveCompleteItem={onResolveCompleteItem}
               />
             </ul>
           </div>
@@ -247,185 +229,3 @@ export function Autocomplete({
     </div>
   );
 }
-
-interface ListProps {
-  completions: CompleteItem[];
-  highlightedIndex: number;
-  getItemProps: (options: UseComboboxGetItemPropsOptions<CompleteItem>) => any;
-  onResolveCompleteItem: AutocompleteProps["onResolveCompleteItem"];
-  fuzzySort?: FuzzysortResults;
-}
-
-const counts = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220];
-const MAX_HEIGHT = 240;
-const ROW_HEIGHT = 28;
-
-const getListHeight = (height: number) => {
-  let listHeight = MAX_HEIGHT;
-  const avaiableHeight = height - ROW_HEIGHT * 2;
-  if (avaiableHeight <= MAX_HEIGHT) {
-    if (avaiableHeight > 84) {
-      listHeight = height - 84;
-    } else {
-      listHeight = height / 2;
-    }
-  }
-  return counts.reduce(function (prev, curr) {
-    return Math.abs(curr - listHeight) < Math.abs(prev - listHeight)
-      ? curr
-      : prev;
-  });
-};
-
-export const List = forwardRef<any, ListProps>(
-  (
-    {
-      highlightedIndex,
-      getItemProps,
-      onResolveCompleteItem,
-      completions,
-      fuzzySort,
-    },
-    ref
-  ) => {
-    const { height = 0 } = useWindowSize();
-    const fullHeight = completions.length * 20;
-    const listHeight = getListHeight(height);
-    return (
-      <FixedSizeList
-        ref={ref}
-        width="100%"
-        height={fullHeight > listHeight ? listHeight : fullHeight}
-        itemCount={completions.length}
-        itemSize={20}
-        itemData={{
-          completions,
-          fuzzySort,
-          highlightedIndex,
-          getItemProps,
-          onResolveCompleteItem,
-        }}
-      >
-        {AutocompleteItem}
-      </FixedSizeList>
-    );
-  }
-);
-
-interface AutocompleteItemProps {
-  index: number;
-  style: React.CSSProperties;
-  data: ListProps;
-}
-
-const AutocompleteItem = ({ index, style, data }: AutocompleteItemProps) => {
-  const {
-    completions,
-    fuzzySort,
-    highlightedIndex,
-    getItemProps,
-    onResolveCompleteItem,
-  } = data;
-  const unmounted = useRef(false);
-  const completion = useMemo(() => {
-    return completions[index];
-  }, [completions, index]);
-  const key = `${completion.label}-${index}`;
-  const result = fuzzySort
-    ? fuzzySort.find((fuzzy) => fuzzy.obj.label === completion.label)
-    : undefined;
-  const [resolved, setResolved] = useState<CompleteItem>(completion);
-  const highlighted = index === highlightedIndex;
-
-  useEffect(() => {
-    const handleResolveCompletionItem = async () => {
-      if (!onResolveCompleteItem) return null;
-      const newItem = await onResolveCompleteItem(completion);
-      if (newItem && newItem.label === completion.label && !unmounted.current) {
-        setResolved(newItem);
-      }
-    };
-    if (!completion.detail && completion.kind !== 16) {
-      handleResolveCompletionItem();
-    }
-
-    return () => {
-      unmounted.current = true;
-    };
-  }, [completion.label]);
-
-  return (
-    <li
-      {...getItemProps({
-        key,
-        className: cx(
-          "flex cursor-pointer items-center justify-between space-x-1.5 pl-2.5 pr-3",
-          highlighted && "bg-blue-500 text-white"
-        ),
-        item: completion,
-        index,
-        style,
-      })}
-    >
-      <div className="flex items-center space-x-1.5">
-        <span className="flex w-4 flex-none justify-center">
-          {completion.kind === 16 && completion.documentation ? (
-            <span
-              className="shadow-px h-3 w-3 flex-none rounded-sm"
-              style={{ background: completion.documentation }}
-            />
-          ) : (
-            <svg
-              width="16"
-              height="10"
-              fill="none"
-              className={cx(
-                highlighted ? "text-white" : "text-black dark:text-white"
-              )}
-            >
-              <rect
-                x=".5"
-                y=".5"
-                width="15"
-                height="9"
-                rx="1.5"
-                stroke="currentColor"
-              />
-              <path fill="currentColor" d="M4 3h8v1H4zM4 6h8v1H4z" />
-            </svg>
-          )}
-        </span>
-
-        {result ? (
-          <span className="flex-1 text-left">
-            {fuzzysort.highlight(result as any, (m, i) => (
-              <mark
-                className={cx(
-                  "bg-transparent font-semibold",
-                  highlighted ? "text-white" : "text-blue-500"
-                )}
-                key={i}
-              >
-                {m}
-              </mark>
-            ))}
-          </span>
-        ) : (
-          <span className="flex-1 text-left">{completion.label}</span>
-        )}
-      </div>
-      {highlighted && completion.kind !== 16 && resolved.detail ? (
-        <span className="max-w-[128px] truncate pl-4 text-right text-neutral-300">
-          {typeof resolved.detail === "string" ? resolved.detail : ""}
-        </span>
-      ) : null}
-      {highlighted && completion.kind === 16 && completion.documentation ? (
-        <span className="max-w-[128px] truncate pl-4 text-right text-neutral-300">
-          {typeof completion.documentation === "string"
-            ? completion.documentation
-            : ""}
-        </span>
-      ) : null}
-    </li>
-  );
-};

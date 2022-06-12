@@ -11,13 +11,8 @@ const Panel = () => {
   const [autocompleteValue, setAutocompleteValue] = React.useState("");
   const [selectedClass, setSelectedClass] = React.useState("");
 
-  const {
-    saveHtml,
-    suggestions,
-    resolveCompletionItem,
-    resolveColor,
-    resolveClassName,
-  } = useSandbox();
+  const { saveHtml, suggestions, resolveColor, resolveClassName } =
+    useSandbox();
 
   const {
     classList,
@@ -57,7 +52,6 @@ const Panel = () => {
         inputValue={autocompleteValue}
         onChange={setAutocompleteValue}
         onEnter={handleHitEnter}
-        onResolveCompleteItem={resolveCompletionItem}
       />
 
       <ClassListProvider
