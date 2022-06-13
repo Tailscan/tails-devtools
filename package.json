@@ -17,6 +17,7 @@
     "@codemirror/lang-css": "^6.0.0",
     "@codemirror/lang-javascript": "^6.0.0",
     "@radix-ui/react-collapsible": "^0.1.6",
+    "@radix-ui/react-popover": "^0.1.6",
     "@uiw/react-codemirror": "^4.8.1",
     "clsx": "^1.1.1",
     "color-name": "^1.1.4",

@@ -4,6 +4,7 @@ import { useClassController } from "@panel/context/class";
 import { useTheme } from "@panel/context/theme";
 import { Checkbox } from "../checkbox";
 import { NormalizedClass } from "./normalize";
+import { ColorSwatches } from "../color-swatches";
 
 export const ClassItem = memo(
   ({
@@ -59,12 +60,7 @@ export const ClassItem = memo(
               {className.normalized}
             </Checkbox>
           </span>
-          {color && (
-            <span
-              className="shadow-px h-3 w-3 flex-none rounded-sm"
-              style={{ background: color }}
-            />
-          )}
+          {color && <ColorSwatches color={color} />}
         </div>
       </div>
     );
