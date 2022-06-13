@@ -2,7 +2,7 @@
 
 > All-in-one browser extension for Tailwind CSS Developer.
 
-<img width="1159" alt="tails-devtools-light" src="https://user-images.githubusercontent.com/84853682/173237887-752d17c9-bd1d-4928-af90-ffe7f5f172a9.png">
+<img width="1159" alt="tails-devtools-light" src="https://user-images.githubusercontent.com/84853682/173239591-4cb1081f-1113-4758-bd8c-ec362be4d88c.png">
 
 ## Supported Browser
 
