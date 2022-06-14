@@ -48,7 +48,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           {...props}
           className={clsx(
-            "form-checkbox h-3.5 w-3.5 focus:outline-none focus:ring-0 focus:ring-offset-0 dark:bg-neutral-900 dark:checked:bg-current",
+            "form-checkbox h-3.5 w-3.5 rounded-sm focus:outline-none focus:ring-0 focus:ring-offset-0 dark:bg-neutral-900 dark:checked:bg-current",
             currColor.checkbox
           )}
         />
