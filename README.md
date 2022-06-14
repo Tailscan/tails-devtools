@@ -12,6 +12,10 @@
 
 Feature request and bug reports are welcome, feel free to draft an issue!
 
+## Support
+
+If you like the project, don't be shy to give us a ⭐ 👻
+
 ## Security
 
 If you discover any security related issues, please email getvechai@gmail.com instead of using the issue tracker.
