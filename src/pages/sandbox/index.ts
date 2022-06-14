@@ -9,9 +9,16 @@ import { defaultCSS } from "@panel/files";
 import { parseConfig } from "./parseConfig";
 import { getColor } from "./tailwindcss-intellisense/utils/color";
 import { TailwindCSS } from "./worker";
+import { findByColor } from "./finder";
 
 const VIRTUAL_SOURCE_PATH = "/sourcePath";
 const VIRTUAL_HTML_FILENAME = "/htmlInput";
+
+const postMessage = (event: MessageEvent<any>, message: any) => {
+  if (event && event.source) {
+    event.source.postMessage(message, event.origin as any);
+  }
+};
 
 (() => {
   let tailwindInstance: TailwindCSS;
@@ -29,15 +36,10 @@ const VIRTUAL_HTML_FILENAME = "/htmlInput";
             const config = await parseConfig(configStr, 3);
             tailwindInstance.changeUserConfig(config);
             const suggestions = tailwindInstance.provideCompletionItems();
-            if (event && event.source) {
-              event.source.postMessage(
-                {
-                  type: actions.complete,
-                  payload: suggestions,
-                },
-                event.origin as any
-              );
-            }
+            postMessage(event, {
+              type: actions.complete,
+              payload: suggestions,
+            });
           } catch (e) {
             console.log(e);
           }
@@ -47,15 +49,10 @@ const VIRTUAL_HTML_FILENAME = "/htmlInput";
           const result = await tailwindInstance.resolveCompletionItem(
             event.data.payload as CompleteItem
           );
-          if (event && event.source) {
-            event.source.postMessage(
-              {
-                _id: event.data._id,
-                payload: result,
-              },
-              event.origin as any
-            );
-          }
+          postMessage(event, {
+            _id: event.data._id,
+            payload: result,
+          });
           break;
         }
         case actions.resolveColor: {
@@ -65,6 +62,22 @@ const VIRTUAL_HTML_FILENAME = "/htmlInput";
               {
                 _id: event.data._id,
                 payload: result ? culori.formatRgb(result) : "",
+              },
+              event.origin as any
+            );
+          }
+          break;
+        }
+        case actions.findColor: {
+          const result = findByColor(
+            event.data.payload,
+            tailwindInstance.state.config
+          );
+          if (event && event.source) {
+            event.source.postMessage(
+              {
+                _id: event.data._id,
+                payload: result,
               },
               event.origin as any
             );

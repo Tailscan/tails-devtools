@@ -23,6 +23,7 @@ export type SandboxContextType = {
     item: CompleteItem
   ) => Promise<CompleteItem | undefined>;
   resolveColor: (item: string) => Promise<string | undefined>;
+  findColor: (item: string) => Promise<string[] | undefined>;
   resolveClassName: (item: string) => Promise<string | undefined>;
 };
 
@@ -35,6 +36,7 @@ const SandboxContext = createContext<SandboxContextType>({
   saveConfig: () => null,
   resolveCompletionItem: async () => undefined,
   resolveColor: async () => undefined,
+  findColor: async () => undefined,
   resolveClassName: async () => undefined,
 });
 SandboxContext.displayName = "SandboxContext";
@@ -108,6 +110,14 @@ export const SandboxProvider: React.FC<SandboxProviderProps> = memo(
       return result || undefined;
     }, []);
 
+    const findColor = useCallback(async (color: string) => {
+      const result = (await request({
+        type: actions.findColor,
+        payload: color,
+      })) as string[];
+      return result || undefined;
+    }, []);
+
     const resolveClassName = useCallback(async (className: string) => {
       const result = (await request({
         type: actions.hover,
@@ -150,6 +160,7 @@ export const SandboxProvider: React.FC<SandboxProviderProps> = memo(
         saveHtml,
         resolveCompletionItem,
         resolveColor,
+        findColor,
         resolveClassName,
       };
     }, [configStr, saving, saveConfig, suggestions]);

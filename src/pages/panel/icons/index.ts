@@ -6,3 +6,5 @@ export * from "./desktop";
 export * from "./moon";
 export * from "./sun";
 export * from "./save";
+export * from "./color-picker";
+export * from "./copy";
