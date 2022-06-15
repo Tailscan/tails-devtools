@@ -238,6 +238,7 @@ export interface ManifestType {
   version_name?: string | undefined;
   web_accessible_resources?:
     | (WebAccessibleResourceById | WebAccessibleResourceByMatch)[]
+    | string[]
     | undefined;
 }
 

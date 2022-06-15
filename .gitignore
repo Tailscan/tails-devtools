@@ -6,6 +6,8 @@
 
 # build
 /dist
+/chrome
+/firefox
 
 # etc
 .DS_Store
@@ -16,3 +18,5 @@
 public/*
 
 /tails-devtools.zip
+/chrome-tails-devtools.zip
+/firefox-tails-devtools.zip

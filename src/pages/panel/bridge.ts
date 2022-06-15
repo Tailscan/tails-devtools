@@ -1,3 +1,4 @@
+import { platform } from "@src/platform";
 import {
   InspectedElement,
   inspectElement,
@@ -9,7 +10,7 @@ import {
   setClassList,
 } from "./remote";
 
-const devtools = chrome.devtools;
+const devtools = platform.devtools;
 const inspectedWindow = devtools.inspectedWindow;
 
 export const factory =

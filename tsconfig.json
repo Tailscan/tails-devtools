@@ -22,6 +22,12 @@
       "@pages/*": ["src/pages/*"]
     }
   },
-  "include": ["src", "utils", "vite.config.ts", "index.d.ts"],
+  "include": [
+    "src",
+    "utils",
+    "vite.config.ts",
+    "vite.firefox.config",
+    "index.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,6 @@
 {
-  "watch": ["src", "utils", "vite.config.ts"],
+  "watch": ["src", "utils", "vite.config.ts", "vite.firefox.config.ts"],
   "ext": "tsx,css,html,ts",
   "ignore": ["src/**/*.spec.ts"],
-  "exec": "vite build"
+  "exec": "vite build && vite build --config vite.firefox.config.ts"
 }

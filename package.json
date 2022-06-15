@@ -9,7 +9,9 @@
   },
   "scripts": {
     "zip": "bash ./scripts/bundle.sh",
-    "build": "tsc --noEmit && vite build && yarn zip",
+    "build": "tsc --noEmit && yarn build:chrome && yarn build:firefox && yarn zip",
+    "build:chrome": "vite build",
+    "build:firefox": "vite build --config vite.firefox.config.ts",
     "dev": "nodemon"
   },
   "type": "module",
