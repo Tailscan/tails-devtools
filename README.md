@@ -6,7 +6,7 @@
 
 ## Supported Browser
 
-<img alt="Chrome" src="https://img.icons8.com/fluent/24/000000/chrome.png" align="center"/> Install extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/tailwind-css-devtools/pgamkpjkbfldnmemhcbekimfdnjcgkco?hl=vi&authuser=0)
+<img alt="Chrome" src="https://img.icons8.com/fluent/24/000000/chrome.png" align="center"/> Install extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/tailwind-css-devtools/pgamkpjkbfldnmemhcbekimfdnjcgkco?authuser=0)
 
 ## Contribute
 
