@@ -6,7 +6,9 @@
 
 ## Supported Browser
 
-<img alt="Chrome" src="https://img.icons8.com/fluent/24/000000/chrome.png" align="center"/> Install extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/tailwind-css-devtools/pgamkpjkbfldnmemhcbekimfdnjcgkco?authuser=0)
+<img width="24" height="24" alt="Chrome" src="https://img.icons8.com/fluent/24/000000/chrome.png" align="center"/> Install extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/tailwind-css-devtools/pgamkpjkbfldnmemhcbekimfdnjcgkco?authuser=0)
+
+<img width="24" height="24" alt="Firefox" src="https://inceptum-stor.icons8.com/M3f8MXabIMHf/icon_Firefox_browser.png" align="center"/> Install extension from [Firefox Add-Ons](https://addons.mozilla.org/firefox/addon/tailwind-css-devtools/)
 
 ## Contribute
 

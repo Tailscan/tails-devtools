@@ -1,3 +1,4 @@
+import { platform } from "@src/platform";
 import React, {
   createContext,
   memo,
@@ -9,7 +10,7 @@ import React, {
 import { useLocalStorage } from "../hooks";
 
 export function getBrowserTheme() {
-  return chrome.devtools.panels.themeName === "dark" ? "dark" : "light";
+  return platform.devtools.panels.themeName === "dark" ? "dark" : "light";
 }
 
 type Theme = "dark" | "light" | "auto";

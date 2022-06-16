@@ -1,6 +1,10 @@
 #!/bin/bash
 set -ex
 
-pushd dist
-zip -r ../tails-devtools.zip .
+pushd chrome
+zip -r ../chrome-tails-devtools.zip .
+popd
+
+pushd firefox
+zip -r ../firefox-tails-devtools.zip .
 popd

@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Inter var";
+  font-weight: 300 700;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url("moz-extension://__MSG_@@extension_id__/fonts/Inter-roman-latin.var.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Code VF";
+  font-display: swap;
+  font-weight: 300 700;
+  font-style: normal;
+  src: url("moz-extension://__MSG_@@extension_id__/fonts/FiraCode-VF.woff2")
+      format("woff2-variations"),
+    url("moz-extension://__MSG_@@extension_id__/fonts/FiraCode-VF.woff")
+      format("woff-variations");
+}

@@ -1,9 +1,14 @@
+import { isChrome, platform } from "@src/platform";
 try {
-  chrome.devtools.panels.elements.createSidebarPane(
+  platform.devtools.panels.elements.createSidebarPane(
     "Tailwind CSS",
-    function (sidebar) {
-      sidebar.setHeight("100vh");
-      sidebar.setPage("src/pages/panel/index.html");
+    function (sidebar: any) {
+      if (isChrome) {
+        sidebar.setPage("src/pages/panel/index.html");
+        sidebar.setHeight("100vh");
+      } else {
+        sidebar.setPage("../panel/index.html");
+      }
     }
   );
 } catch (e) {

@@ -1,4 +1,5 @@
 @import "./font.css";
+@import "./fonts.firefox.css";
 
 @tailwind base;
 @tailwind components;

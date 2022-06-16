@@ -8,9 +8,8 @@ import copyFonts from "./utils/plugins/copy-fonts";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
-const assetsDir = resolve(root, "assets");
 const panelDir = resolve(pagesDir, "panel");
-const outDir = resolve(__dirname, "dist");
+const outDir = resolve(__dirname, "chrome");
 const publicDir = resolve(__dirname, "public");
 
 function selfResolve() {
@@ -43,13 +42,13 @@ export const sharedConfig: UserConfig = {
   define: {
     "process.env": process.env,
   },
-  plugins: [react(), makeManifest(), selfResolve(), copyLogo(), copyFonts()],
+  plugins: [react(), selfResolve(), copyLogo(), copyFonts()],
   publicDir,
 };
 
 export default defineConfig({
   ...sharedConfig,
-  plugins: [...(sharedConfig.plugins || [])],
+  plugins: [...(sharedConfig.plugins || []), makeManifest()],
   build: {
     target: ["es2020"],
     outDir,

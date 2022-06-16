@@ -27,7 +27,8 @@
     "@typescript-eslint/no-explicit-any": "off"
   },
   "globals": {
-    "chrome": "readonly"
+    "chrome": "readonly",
+    "browser": "readonly"
   },
   "ignorePatterns": ["watch.js", "dist/**"]
 }
